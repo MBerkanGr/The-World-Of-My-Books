@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TheWorldOfMyBooks">
         <activity
+            android:name=".TargetBooksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateBookActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddBookActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignupActivity"
             android:exported="false" />
         <activity
