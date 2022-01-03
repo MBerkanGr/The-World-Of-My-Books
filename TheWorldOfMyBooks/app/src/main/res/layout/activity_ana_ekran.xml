@@ -61,14 +61,13 @@
         app:layout_constraintBottom_toTopOf="@+id/buttonTargetBooks"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="419dp"
-        android:layout_height="342dp"
+    <ListView
+        android:id="@+id/listViewLibrary"
+        android:layout_width="409dp"
+        android:layout_height="370dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="1dp"
         android:layout_marginEnd="5dp"
-        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonUpdate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

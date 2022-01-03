@@ -83,4 +83,16 @@ public class Book {
     public void setRead(boolean read) {
         this.read = read;
     }
+
+    @Override
+    public String toString() {
+        String result;
+        if(read){
+            result = "Okundu";
+        }else{
+            result = "Okunmadı";
+        }
+
+        return "No: "+id+"\nKitap İsmi: "+name+"\nYazar: "+author+"\nSayfa Sayısı: "+numberofsize+"\nKategori: "+category+"\n"+result+"\n";
+    }
 }
