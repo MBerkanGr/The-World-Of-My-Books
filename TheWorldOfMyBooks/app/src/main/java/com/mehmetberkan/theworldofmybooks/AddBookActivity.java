@@ -14,6 +14,8 @@ import com.mehmetberkan.theworldofmybooks.database.Db_Manager;
 
 public class AddBookActivity extends AppCompatActivity {
 
+    Db_Manager db_manager;
+
     private EditText editTextName, editTextAuthor, editTextCategory, editTextNop;
     private Button buttonAdd;
     private Switch switchRead, switchOwned;
@@ -23,7 +25,7 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        Db_Manager db_manager = new Db_Manager(this);
+        db_manager = new Db_Manager(this);
         db_manager.open();
 
         editTextName = (EditText) findViewById(R.id.editTextAddName);
@@ -37,17 +39,37 @@ public class AddBookActivity extends AppCompatActivity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = editTextName.getText().toString();
-                String author = editTextAuthor.getText().toString();
-                int nop = Integer.valueOf(editTextNop.getText().toString());
-                String category = editTextCategory.getText().toString();
-                Boolean owned = switchOwned.isChecked();
-                Boolean read = switchRead.isChecked();
+                if(editTextName.getText().toString().isEmpty() || editTextAuthor.getText().toString().isEmpty() || editTextNop.getText().toString().isEmpty() || editTextCategory.getText().toString().isEmpty()) {
+                    Toast.makeText(getApplicationContext(),"Boş Kısımlar var!",Toast.LENGTH_SHORT).show();
+                }else {
+                    if(switchOwned.isChecked() == false && switchRead.isChecked() == true) {
+                        Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_LONG).show();
+                    }else {
+                        String name = editTextName.getText().toString();
+                        String author = editTextAuthor.getText().toString();
+                        int nop = Integer.valueOf(editTextNop.getText().toString());
+                        String category = editTextCategory.getText().toString();
+                        Boolean owned = switchOwned.isChecked();
+                        Boolean read = switchRead.isChecked();
 
-                String message = db_manager.add_book(name,author,nop,category,owned,read);
-                Toast.makeText(getApplicationContext(),message.toString(),Toast.LENGTH_LONG).show();
-                startActivity(new Intent(AddBookActivity.this,AnaEkranActivity.class));
+                        String message = db_manager.add_book(name,author,nop,category,owned,read);
+                        Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(AddBookActivity.this,AnaEkranActivity.class));
+                        }
+                }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        db_manager.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        db_manager.close();
+        super.onPause();
     }
 }

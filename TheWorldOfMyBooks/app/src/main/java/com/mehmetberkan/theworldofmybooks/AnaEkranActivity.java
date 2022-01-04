@@ -3,22 +3,20 @@ package com.mehmetberkan.theworldofmybooks;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.mehmetberkan.theworldofmybooks.database.Db_Manager;
-import com.mehmetberkan.theworldofmybooks.entity.Book;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AnaEkranActivity extends AppCompatActivity {
@@ -29,6 +27,8 @@ public class AnaEkranActivity extends AppCompatActivity {
     private ListView listViewLibrary;
     ArrayAdapter<String> arrayAdapter;
     List<String> stringBookList = null;
+    String selectedItem;
+    int selectedItemId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +64,26 @@ public class AnaEkranActivity extends AppCompatActivity {
         buttonUpdateBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AnaEkranActivity.this, UpdateBookActivity.class));
+                if(selectedItemId != 0) {
+                    Intent bookId = new Intent(AnaEkranActivity.this,UpdateBookActivity.class);
+                    bookId.putExtra("bookId",selectedItemId);
+                    startActivity(bookId);
+                }else {
+                    Toast.makeText(getApplicationContext(),"Herhangi Bir Kitap Seçilmedi", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         buttonDeleteBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int selectedId = listViewLibrary.getSelectedView().getId();
-                Toast.makeText(getApplicationContext(),String.valueOf(selectedId),Toast.LENGTH_LONG).show();
-
-                //String message = db_manager.delete_book();
-                //Toast.makeText(getApplicationContext(),message,Toast.LENGTH_LONG).show();
+                if(selectedItemId != 0) {
+                    String result = db_manager.delete_book(selectedItemId);
+                    Toast.makeText(getApplicationContext(),result, Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(AnaEkranActivity.this, AnaEkranActivity.class));
+                }else {
+                    Toast.makeText(getApplicationContext(),"Herhangi Bir Kitap Seçilmedi", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -83,6 +91,14 @@ public class AnaEkranActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(AnaEkranActivity.this,TargetBooksActivity.class));
+            }
+        });
+
+        listViewLibrary.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedItem = adapterView.getItemAtPosition(i).toString();
+                selectedItemId = Integer.valueOf(selectedItem.charAt(4)+"");
             }
         });
 
@@ -112,5 +128,17 @@ public class AnaEkranActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        db_manager.open();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        db_manager.close();
+        super.onPause();
     }
 }

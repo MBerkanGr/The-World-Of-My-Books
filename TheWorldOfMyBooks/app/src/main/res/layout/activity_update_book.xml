@@ -58,12 +58,12 @@
         android:id="@+id/switchUpdateRead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:minHeight="48dp"
         android:text="Okundu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateNop" />
+        app:layout_constraintTop_toBottomOf="@+id/switchUpdateOwned" />
 
     <EditText
         android:id="@+id/editTextUpdateCategory"
@@ -100,6 +100,19 @@
         android:text="Satın Alındı"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/switchUpdateRead" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateNop" />
+
+    <TextView
+        android:id="@+id/textViewUpdateBookId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="19dp"
+        android:text="TextView"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

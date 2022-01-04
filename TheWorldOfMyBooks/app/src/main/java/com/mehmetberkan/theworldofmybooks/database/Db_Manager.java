@@ -39,6 +39,22 @@ public class Db_Manager {
             db.insert("Books", null, val);
             return "Başarıyla " + book.getName() + " eklendi";
         } catch (Exception e) {
+            return e.getMessage().toString();
+        }
+    }
+
+    public String update_book(int id,String name, String author, int numberofsize, String category, Boolean owned, Boolean read) {
+        try{
+            ContentValues val = new ContentValues();
+            val.put("name", name);
+            val.put("author", author);
+            val.put("numberofsize", numberofsize);
+            val.put("category", category);
+            val.put("owned", owned);
+            val.put("read", read);
+            db.update("books",val,"id="+id,null);
+            return "Başarıyla No : " + id + " güncellendi";
+        }catch (Exception e) {
             return e.getMessage();
         }
     }
@@ -48,7 +64,7 @@ public class Db_Manager {
             db.delete("books", "id=" + bookId, null);
             return "Başarıyla Silindi";
         } catch (Exception e) {
-            return e.getMessage();
+            return e.getMessage().toString();
         }
     }
 
@@ -66,7 +82,6 @@ public class Db_Manager {
                 String category = c.getString(4);
                 Boolean owned = c.getInt(5) > 0;
                 Boolean read = c.getInt(6) > 0;
-                System.out.println(read);
                 Book book = new Book(id, name, author, numberofsize, category, owned, read);
                 bookList.add(book.toString());
                 c.moveToNext();
@@ -90,12 +105,27 @@ public class Db_Manager {
                 String category = c.getString(4);
                 Boolean owned = c.getInt(5) > 0;
                 Boolean read = c.getInt(6) > 0;
-                System.out.println(read);
                 Book book = new Book(id, name, author, numberofsize, category, owned, read);
                 bookList.add(book.toString());
                 c.moveToNext();
             }
             return bookList;
+        }
+        return null;
+    }
+
+    public Book getByBookId(int bookId) {
+        Cursor c = db.rawQuery("select * from books where id = "+bookId,null);
+        if(c.moveToFirst()) {
+            int id = c.getInt(0);
+            String name = c.getString(1);
+            String author = c.getString(2);
+            int numberofsize = c.getInt(3);
+            String category = c.getString(4);
+            Boolean owned = c.getInt(5) > 0;
+            Boolean read = c.getInt(6) > 0;
+            Book book = new Book(id, name, author, numberofsize, category, owned, read);
+            return book;
         }
         return null;
     }
