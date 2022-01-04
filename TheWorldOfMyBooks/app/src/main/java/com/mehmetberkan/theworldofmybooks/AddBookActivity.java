@@ -43,7 +43,7 @@ public class AddBookActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Boş Kısımlar var!",Toast.LENGTH_SHORT).show();
                 }else {
                     if(switchOwned.isChecked() == false && switchRead.isChecked() == true) {
-                        Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_SHORT).show();
                     }else {
                         String name = editTextName.getText().toString();
                         String author = editTextAuthor.getText().toString();

@@ -51,7 +51,7 @@ public class AnaEkranActivity extends AppCompatActivity {
             arrayAdapter.notifyDataSetChanged();
         }
         else {
-            Toast.makeText(getApplicationContext(),"Hiç bir kitap yok",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Hiç bir kitap yok",Toast.LENGTH_SHORT).show();
         }
 
         buttonAddBook.setOnClickListener(new View.OnClickListener() {
@@ -98,10 +98,9 @@ public class AnaEkranActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
-                selectedItemId = Integer.valueOf(selectedItem.charAt(4)+"");
+                selectedItemId = Integer.valueOf(selectedItem.substring(4,7).trim());
             }
         });
-
     }
 
     @Override

@@ -47,7 +47,7 @@ public class TargetBooksActivity extends AppCompatActivity {
             listViewTarget.setAdapter(arrayAdapter);
             arrayAdapter.notifyDataSetChanged();
         }else {
-            Toast.makeText(getApplicationContext(),"Almadığınız kitap yok",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Almadığınız kitap yok",Toast.LENGTH_SHORT).show();
         }
 
         buttonAnaEkran.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +87,7 @@ public class TargetBooksActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
-                selectedItemId = Integer.valueOf(selectedItem.charAt(4)+"");
+                selectedItemId = Integer.valueOf(selectedItem.substring(4,7)+"");
             }
         });
     }

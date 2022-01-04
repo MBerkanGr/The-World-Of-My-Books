@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/board"
     tools:context=".AnaEkranActivity">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:text="Kütüphanem"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,12 +64,10 @@
 
     <ListView
         android:id="@+id/listViewLibrary"
-        android:layout_width="409dp"
-        android:layout_height="370dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonUpdate"
+        style="@style/Widget.AppCompat.ListView.Menu"
+        android:layout_width="386dp"
+        android:layout_height="428dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
