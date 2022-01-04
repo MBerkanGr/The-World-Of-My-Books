@@ -40,7 +40,7 @@ public class AddBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(editTextName.getText().toString().isEmpty() || editTextAuthor.getText().toString().isEmpty() || editTextNop.getText().toString().isEmpty() || editTextCategory.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Boş Kısımlar var!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Boş kısımlar var!",Toast.LENGTH_SHORT).show();
                 }else {
                     if(switchOwned.isChecked() == false && switchRead.isChecked() == true) {
                         Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_SHORT).show();

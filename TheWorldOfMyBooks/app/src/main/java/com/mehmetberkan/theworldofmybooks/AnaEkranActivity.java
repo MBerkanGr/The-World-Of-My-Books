@@ -69,7 +69,7 @@ public class AnaEkranActivity extends AppCompatActivity {
                     bookId.putExtra("bookId",selectedItemId);
                     startActivity(bookId);
                 }else {
-                    Toast.makeText(getApplicationContext(),"Herhangi Bir Kitap Seçilmedi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Herhangi bir kitap seçilmedi", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -82,7 +82,7 @@ public class AnaEkranActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),result, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AnaEkranActivity.this, AnaEkranActivity.class));
                 }else {
-                    Toast.makeText(getApplicationContext(),"Herhangi Bir Kitap Seçilmedi", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Herhangi bir kitap seçilmedi", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -98,7 +98,7 @@ public class AnaEkranActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 selectedItem = adapterView.getItemAtPosition(i).toString();
-                selectedItemId = Integer.valueOf(selectedItem.substring(4,7).trim());
+                selectedItemId = Integer.valueOf(selectedItem.substring(4,selectedItem.indexOf("\n")).trim());
             }
         });
     }

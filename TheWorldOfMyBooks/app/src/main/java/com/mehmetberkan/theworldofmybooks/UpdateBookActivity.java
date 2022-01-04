@@ -58,7 +58,7 @@ public class UpdateBookActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(editTextname.getText().toString().isEmpty() || editTextauthor.getText().toString().isEmpty() || editTextNop.getText().toString().isEmpty() || editTextCategory.getText().toString().isEmpty()) {
-                    Toast.makeText(getApplicationContext(),"Boş Kısımlar var!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Boş kısımlar var!",Toast.LENGTH_SHORT).show();
                 }else {
                     if(switchOwned.isChecked() == false && switchRead.isChecked() == true) {
                         Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_SHORT).show();

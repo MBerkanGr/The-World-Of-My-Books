@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(new Intent(MainActivity.this, AnaEkranActivity.class));
                 }
                 else {
-                    Toast.makeText(getApplicationContext(),"Giriş Başarısız", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Giriş başarısız", Toast.LENGTH_SHORT).show();
                 }
             }
         });
