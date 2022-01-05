@@ -117,12 +117,15 @@ public class AnaEkranActivity extends AppCompatActivity {
             Intent intent = new Intent(this,AddBookActivity.class);
             startActivity(intent);
 
-        } else if (item.getItemId() == R.id.library) {
+        } else if(item.getItemId() == R.id.library) {
             Intent intent = new Intent(this,AnaEkranActivity.class);
             startActivity(intent);
 
-        } else if (item.getItemId() == R.id.target_library) {
+        } else if(item.getItemId() == R.id.target_library) {
             Intent intent = new Intent(this,TargetBooksActivity.class);
+            startActivity(intent);
+        } else if(item.getItemId() == R.id.statistics) {
+            Intent intent = new Intent(this, StatisticsActivity.class);
             startActivity(intent);
         }
 

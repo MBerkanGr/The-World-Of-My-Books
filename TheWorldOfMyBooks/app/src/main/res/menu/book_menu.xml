@@ -3,4 +3,5 @@
 <item android:id="@+id/add_book" android:title="Kitap Ekle"></item>
     <item android:id="@+id/library" android:title="Kütüphane"></item>
     <item android:id="@+id/target_library" android:title="Alınacak Kitaplar"></item>
+    <item android:id="@+id/statistics" android:title="İstatistikler"></item>
 </menu>

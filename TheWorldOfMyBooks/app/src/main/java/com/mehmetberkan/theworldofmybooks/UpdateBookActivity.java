@@ -64,10 +64,10 @@ public class UpdateBookActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_SHORT).show();
                     }else {
                         int id = book_id;
-                        String name = editTextname.getText().toString();
-                        String author = editTextauthor.getText().toString();
+                        String name = editTextname.getText().toString().trim();
+                        String author = editTextauthor.getText().toString().trim();
                         int nop = Integer.valueOf(editTextNop.getText().toString());
-                        String category = editTextCategory.getText().toString();
+                        String category = editTextCategory.getText().toString().trim();
                         Boolean owned = switchOwned.isChecked();
                         Boolean read = switchRead.isChecked();
 

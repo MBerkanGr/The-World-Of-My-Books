@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String userName = editTextUsername.getText().toString();
-                String password = editTextPassword.getText().toString();
+                String userName = editTextUsername.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
                 if(db_manager_user.login(userName,password)) {
                     startActivity(new Intent(MainActivity.this, AnaEkranActivity.class));
                 }

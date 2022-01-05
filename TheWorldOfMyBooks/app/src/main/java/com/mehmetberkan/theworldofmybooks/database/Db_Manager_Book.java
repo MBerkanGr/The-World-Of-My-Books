@@ -128,4 +128,49 @@ public class Db_Manager_Book {
         }
         return null;
     }
+
+    public int getNob() {
+        int sum = 0;
+        Cursor c = db.rawQuery("select count(*) from books where owned = 1",null);
+        if(c.moveToFirst()) {
+            sum = c.getInt(0);
+        }
+        return sum;
+    }
+
+    public int getNopr() {
+        int sum = 0;
+        Cursor c = db.rawQuery("select sum(numberofsize) from books where read = 1",null);
+        if(c.moveToFirst()) {
+           sum = c.getInt(0);
+        }
+        return sum;
+    }
+
+    public int getNobr() {
+        int sum = 0;
+        Cursor c = db.rawQuery("select count(*) from books where read = 1",null);
+        if(c.moveToFirst()) {
+            sum = c.getInt(0);
+        }
+        return sum;
+    }
+
+    public  int getNodc() {
+        int sum = 0;
+        Cursor c = db.rawQuery("select count(distinct category) from books where owned = 1",null);
+        if(c.moveToFirst()) {
+            sum = c.getInt(0);
+        }
+        return sum;
+    }
+
+    public int getNoda() {
+        int sum = 0;
+        Cursor c = db.rawQuery("select count(distinct author) from books where owned = 1 ",null);
+        if(c.moveToFirst()) {
+            sum = c.getInt(0);
+        }
+        return sum;
+    }
 }

@@ -45,10 +45,10 @@ public class AddBookActivity extends AppCompatActivity {
                     if(switchOwned.isChecked() == false && switchRead.isChecked() == true) {
                         Toast.makeText(getApplicationContext(),"Satın alınmadan kitap okundu bilgisi eklenemez!",Toast.LENGTH_SHORT).show();
                     }else {
-                        String name = editTextName.getText().toString();
-                        String author = editTextAuthor.getText().toString();
+                        String name = editTextName.getText().toString().trim();
+                        String author = editTextAuthor.getText().toString().trim();
                         int nop = Integer.valueOf(editTextNop.getText().toString());
-                        String category = editTextCategory.getText().toString();
+                        String category = editTextCategory.getText().toString().trim();
                         Boolean owned = switchOwned.isChecked();
                         Boolean read = switchRead.isChecked();
 

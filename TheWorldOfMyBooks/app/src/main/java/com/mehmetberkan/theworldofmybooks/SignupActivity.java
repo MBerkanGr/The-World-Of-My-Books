@@ -36,9 +36,9 @@ public class SignupActivity extends AppCompatActivity {
         buttonSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nameSurname = editTextNameSurname.getText().toString();
-                String userName = editTextUsername.getText().toString();
-                String password = editTextPassword.getText().toString();
+                String nameSurname = editTextNameSurname.getText().toString().trim();
+                String userName = editTextUsername.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
 
                 if(!nameSurname.isEmpty() && !userName.isEmpty() && !password.isEmpty()) {
                     db_manager_user.add_user(nameSurname,userName,password);
