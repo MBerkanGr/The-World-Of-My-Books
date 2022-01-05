@@ -10,11 +10,11 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.mehmetberkan.theworldofmybooks.database.Db_Manager;
+import com.mehmetberkan.theworldofmybooks.database.Db_Manager_Book;
 
 public class AddBookActivity extends AppCompatActivity {
 
-    Db_Manager db_manager;
+    Db_Manager_Book db_managerBook;
 
     private EditText editTextName, editTextAuthor, editTextCategory, editTextNop;
     private Button buttonAdd;
@@ -25,8 +25,8 @@ public class AddBookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        db_manager = new Db_Manager(this);
-        db_manager.open();
+        db_managerBook = new Db_Manager_Book(this);
+        db_managerBook.open();
 
         editTextName = (EditText) findViewById(R.id.editTextAddName);
         editTextAuthor = (EditText) findViewById(R.id.editTextAddAuthor);
@@ -52,7 +52,7 @@ public class AddBookActivity extends AppCompatActivity {
                         Boolean owned = switchOwned.isChecked();
                         Boolean read = switchRead.isChecked();
 
-                        String message = db_manager.add_book(name,author,nop,category,owned,read);
+                        String message = db_managerBook.add_book(name,author,nop,category,owned,read);
                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(AddBookActivity.this,AnaEkranActivity.class));
                         }
@@ -63,13 +63,13 @@ public class AddBookActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        db_manager.open();
+        db_managerBook.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        db_manager.close();
+        db_managerBook.close();
         super.onPause();
     }
 }

@@ -9,7 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mehmetberkan.theworldofmybooks.database.Db_Manager_Book;
+import com.mehmetberkan.theworldofmybooks.database.Db_Manager_User;
+
 public class MainActivity extends AppCompatActivity {
+
+    Db_Manager_User db_manager_user;
 
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -26,12 +31,15 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
 
+        db_manager_user = new Db_Manager_User(this);
+        db_manager_user.open();
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String userName = editTextUsername.getText().toString();
                 String password = editTextPassword.getText().toString();
-                if(userName.equals("Admin") && password.equals("123")) {
+                if(db_manager_user.login(userName,password)) {
                     startActivity(new Intent(MainActivity.this, AnaEkranActivity.class));
                 }
                 else {

@@ -10,11 +10,11 @@ import com.mehmetberkan.theworldofmybooks.entity.Book;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Db_Manager {
+public class Db_Manager_Book {
     SQLiteDatabase db;
     Database dbm;
 
-    public Db_Manager(Context context) {
+    public Db_Manager_Book(Context context) {
         dbm = new Database(context);
     }
 
@@ -28,16 +28,15 @@ public class Db_Manager {
 
     public String add_book(String name, String author, int numberofsize, String category, Boolean owned, Boolean read) {
         try {
-            Book book = new Book(name, author, numberofsize, category, owned, read);
             ContentValues val = new ContentValues();
-            val.put("name", book.getName());
-            val.put("author", book.getAuthor());
-            val.put("numberofsize", book.getNumberofsize());
-            val.put("category", book.getCategory());
-            val.put("owned", book.isOwned());
-            val.put("read", book.isRead());
-            db.insert("Books", null, val);
-            return "Başarıyla " + book.getName() + " eklendi";
+            val.put("name", name);
+            val.put("author", author);
+            val.put("numberofsize", numberofsize);
+            val.put("category", category);
+            val.put("owned", owned);
+            val.put("read", read);
+            db.insert("books", null, val);
+            return "Başarıyla " + name + " eklendi";
         } catch (Exception e) {
             return e.getMessage().toString();
         }

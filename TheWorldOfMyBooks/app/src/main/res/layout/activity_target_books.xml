@@ -20,32 +20,32 @@
 
     <Button
         android:id="@+id/buttonTargetAnaEkran"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="56dp"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="25dp"
         android:text="Geri Dön"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTargetDelete"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/buttonTargetDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:text="Sil"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="25dp"
+        android:text="Kitap Sil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonTargetUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginBottom="56dp"
-        android:text="Güncelle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="25dp"
+        android:text="Kitap Güncelle"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTargetDelete"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ListView

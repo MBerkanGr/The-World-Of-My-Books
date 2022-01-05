@@ -15,13 +15,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.mehmetberkan.theworldofmybooks.database.Db_Manager;
+import com.mehmetberkan.theworldofmybooks.database.Db_Manager_Book;
 
 import java.util.List;
 
 public class AnaEkranActivity extends AppCompatActivity {
 
-    Db_Manager db_manager;
+    Db_Manager_Book db_managerBook;
 
     private Button buttonAddBook, buttonUpdateBook, buttonDeleteBook, buttonTargetBooks;
     private ListView listViewLibrary;
@@ -41,11 +41,11 @@ public class AnaEkranActivity extends AppCompatActivity {
         buttonTargetBooks = findViewById(R.id.buttonTargetBooks);
         listViewLibrary = findViewById(R.id.listViewLibrary);
 
-        db_manager = new Db_Manager(this);
-        db_manager.open();
+        db_managerBook = new Db_Manager_Book(this);
+        db_managerBook.open();
 
-        if(db_manager.getListBooks() != null) {
-            stringBookList = db_manager.getListBooks();
+        if(db_managerBook.getListBooks() != null) {
+            stringBookList = db_managerBook.getListBooks();
             arrayAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_1,stringBookList);
             listViewLibrary.setAdapter(arrayAdapter);
             arrayAdapter.notifyDataSetChanged();
@@ -78,7 +78,7 @@ public class AnaEkranActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(selectedItemId != 0) {
-                    String result = db_manager.delete_book(selectedItemId);
+                    String result = db_managerBook.delete_book(selectedItemId);
                     Toast.makeText(getApplicationContext(),result, Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(AnaEkranActivity.this, AnaEkranActivity.class));
                 }else {
@@ -131,13 +131,13 @@ public class AnaEkranActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        db_manager.open();
+        db_managerBook.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        db_manager.close();
+        db_managerBook.close();
         super.onPause();
     }
 }

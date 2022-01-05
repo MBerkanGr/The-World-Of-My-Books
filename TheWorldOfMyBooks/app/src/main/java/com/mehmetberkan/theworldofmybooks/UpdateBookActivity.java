@@ -11,12 +11,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mehmetberkan.theworldofmybooks.database.Db_Manager;
+import com.mehmetberkan.theworldofmybooks.database.Db_Manager_Book;
 import com.mehmetberkan.theworldofmybooks.entity.Book;
 
 public class UpdateBookActivity extends AppCompatActivity {
 
-    Db_Manager db_manager;
+    Db_Manager_Book db_managerBook;
 
     private EditText editTextname, editTextauthor, editTextCategory, editTextNop;
     private TextView textViewbookId;
@@ -39,12 +39,12 @@ public class UpdateBookActivity extends AppCompatActivity {
         switchRead = (Switch) findViewById(R.id.switchUpdateRead);
         switchOwned = (Switch) findViewById(R.id.switchUpdateOwned);
 
-        db_manager = new Db_Manager(this);
-        db_manager.open();
+        db_managerBook = new Db_Manager_Book(this);
+        db_managerBook.open();
 
         Intent mIntent = getIntent();
         book_id = mIntent.getIntExtra("bookId",0);
-        Book book = db_manager.getByBookId(book_id);
+        Book book = db_managerBook.getByBookId(book_id);
 
         textViewbookId.setText("No : "+book.getId());
         editTextname.setText(book.getName());
@@ -71,7 +71,7 @@ public class UpdateBookActivity extends AppCompatActivity {
                         Boolean owned = switchOwned.isChecked();
                         Boolean read = switchRead.isChecked();
 
-                        String message = db_manager.update_book(id,name,author,nop,category,owned,read);
+                        String message = db_managerBook.update_book(id,name,author,nop,category,owned,read);
                         Toast.makeText(getApplicationContext(),message,Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(UpdateBookActivity.this,AnaEkranActivity.class));
                     }
@@ -82,13 +82,13 @@ public class UpdateBookActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        db_manager.open();
+        db_managerBook.open();
         super.onResume();
     }
 
     @Override
     protected void onPause() {
-        db_manager.close();
+        db_managerBook.close();
         super.onPause();
     }
 }
