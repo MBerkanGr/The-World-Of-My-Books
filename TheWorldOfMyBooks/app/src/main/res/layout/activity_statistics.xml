@@ -11,7 +11,7 @@
         android:id="@+id/textViewStasTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="80dp"
         android:text="İstatistikler"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,8 +21,8 @@
 
     <Button
         android:id="@+id/buttonStasAnaEkran"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="68dp"
         android:text="Ana Menü"
         app:layout_constraintBottom_toBottomOf="parent"
